@@ -1,7 +1,12 @@
-/* Styling the heading title of page */
+/* Styling the title of page */
 h1 {
     text-align: center;
     color: white;
+}
+
+/* Styling the subheading of page */
+h2 {
+    color: #2B985E;
 }
 
 /* Adding a gradient background to the header of page and adding spacing */
@@ -32,7 +37,7 @@ h1 {
     float: right;
 }
 
-/* Flipping horizontally and positioning the search icon within the button */
+/* Flipping horizontally, resizing, and positioning the search icon within the button */
 #searchbtnicon {
     transform: scaleX(-1);
     margin-left: -12px;
@@ -53,4 +58,9 @@ input[type="text"]:focus {
     border-color: #218838;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #218838;
     outline: 0 none;
+}
+
+/* Changing background colour of the favourites section of page */
+#favouritessection {
+    background-color: #F7FEFA;
 }

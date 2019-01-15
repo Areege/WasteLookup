@@ -2,10 +2,12 @@
 <html>
 <head>
     <title>Toronto Waste Lookup</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
     <link rel="stylesheet" type="text/css" href="wastelookup.css">
+    <script type = "text/javascript" src = "wastelookup.js" ></script>
 </head>
 <body>
 
@@ -27,6 +29,29 @@
         </div>
     </div>
     </form>
+    <div class="row" id="results">
+        <div class="col-6" id="resulttitle">
+            Titles of results go here.
+        </div>
+        <div class="col-6" id="resultdesc">
+            Descriptions of results go here.
+        </div>
+    </div>
+    <div id="favouritessection">
+        <div class="row" id="favouritesheader">
+            <div class="col-12">
+                <h2><strong>Favourites</strong></h2>
+            </div>
+        </div>
+        <div class="row" id="favourites">
+            <div class="col-6">
+                Favourites titles go here.
+            </div>
+            <div class="col-6">
+                Favourites descriptions go here.
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
