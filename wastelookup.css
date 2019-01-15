@@ -1,0 +1,56 @@
+/* Styling the heading title of page */
+h1 {
+    text-align: center;
+    color: white;
+}
+
+/* Adding a gradient background to the header of page and adding spacing */
+#header {
+    background-image: linear-gradient(to right, #1d5993, #22965e);
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+}
+
+/* Adding spacing between header and search section of page */
+#searchbar {
+    margin-top: 1em;
+}
+
+/* Styling the search input */
+.form-control {
+    border-radius: .15rem;
+    height: calc(3rem + 2px);
+}
+
+/* Styling the search button */
+.btn-success {
+    color: #fff;
+    background-color: #23995C;
+    border-color: #23995C;
+    height: calc(3rem + 2px) !important;
+    width: calc(3rem + 2px) !important;
+    float: right;
+}
+
+/* Flipping horizontally and positioning the search icon within the button */
+#searchbtnicon {
+    transform: scaleX(-1);
+    margin-left: -12px;
+    margin-top: -7px;
+    font-size: 3rem;
+}
+
+/* Removing padding around search box and button */
+#inputbox { 
+    padding-right: 0px;
+}
+#searchbutton {
+    padding-left: 0px;
+}
+
+/* Changing the colour of the "glow" around the search input box when it is focused on */
+input[type="text"]:focus {
+    border-color: #218838;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #218838;
+    outline: 0 none;
+}
