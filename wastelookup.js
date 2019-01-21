@@ -11,6 +11,7 @@ $(document).ready(function(){ // detects whether the DOM is ready to execute Jav
         var wasteItems = request.response; // wasteItems represents the JSON object retrieved from the network
 
         $('#submitbutton').click(function() { // when the submit button is clicked...
+
             $('#results').empty(); //empty the div before filling it with new search query
             var parser = new DOMParser; // initialize a DOMParser object
             var resultArray = []; // an array to store the results for the search query
@@ -38,10 +39,19 @@ $(document).ready(function(){ // detects whether the DOM is ready to execute Jav
                 // parse the 'body' value in JSON to display it correctly on page
                 var description = parser.parseFromString(resultArray[i]["body"], 'text/html'); 
                 description = description.documentElement.textContent;
+                var starIcon = $('<ion-icon/>',{name: "star", class: "staricon" });
+
+                // if the item is already in favourites, render a green star
+                $('#favourites').find('.row').each(function() {
+                    if($(this).find('.col-5')[0].innerText == resultArray[i]["title"]) {
+                        starIcon = $('<ion-icon/>',{name: "star", class: "staricon greenstar" });
+                    }
+                });
+
                 $('#results').append(
                     $('<div/>',{class: "row"}).append(
                         $('<div/>',{class: "col-5"}).append( 
-                            $('<ion-icon/>',{name: "star", class: "staricon" }),
+                            starIcon,
                             resultArray[i]["title"]
                         ),
                         $('<div/>',{class: "col-7"}).append(
@@ -77,9 +87,6 @@ $(document).ready(function(){ // detects whether the DOM is ready to execute Jav
             } else {
                 // remove from favourites div
                 $('#favourites').find('.row').each(function() {
-                    console.log($(this).find('.col-5'));
-                    console.log($(this).find('.col-5')[0].innerText);
-                    console.log(currentObject.title);
                     if ($(this).find('.col-5')[0].innerText == currentObject.title) {
                         $(this).remove();
                     }
@@ -87,7 +94,7 @@ $(document).ready(function(){ // detects whether the DOM is ready to execute Jav
                 // change the star's colour in the results section
                 $('#results').find('.row').each(function() {
                     if ($(this).find('.col-5')[0].innerText == currentObject.title) {
-                        console.log(!($($(this).find('.staricon')[0]).hasClass("greenstar")));
+
                         if ($($(this).find('.staricon')[0]).hasClass("greenstar")){
                             $($(this).find('.staricon')[0]).toggleClass("greenstar");
                         }
