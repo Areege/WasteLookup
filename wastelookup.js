@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function(){ // detects whether the DOM is ready to execute Javascript code
 
     // Send a request to retrive the JSON file from the toronto.ca website
     var requestURL = 'https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000';
@@ -9,7 +9,6 @@ $(document).ready(function(){
     // Once the requested item has been retrieved, run the following within an anonymous function
     request.onload = function() {
         var wasteItems = request.response; // wasteItems represents the JSON object retrieved from the network
-        var favouritesArray = []; // an array to store user's favourites
 
         $('#submitbutton').click(function() { // when the submit button is clicked...
             $('#results').empty(); //empty the div before filling it with new search query
@@ -30,11 +29,12 @@ $(document).ready(function(){
                         resultArray.push(currentItem);
                     }
                 }
-            }
+            } // end checkArrayItem function
 
             // attach information from each search result into the html body
             for (var i = 0; i <= ((resultArray.length)-1); i++) {
-                var description = parser.parseFromString(resultArray[i]["body"], 'text/html'); // parse the 'body' value in JSON to display correctly on page
+                // parse the 'body' value in JSON to display it correctly on page
+                var description = parser.parseFromString(resultArray[i]["body"], 'text/html'); 
                 description = description.documentElement.textContent;
                 $('#results').append(
                     $('<div/>',{class: "row"}).append(
@@ -50,14 +50,16 @@ $(document).ready(function(){
             }
         }); // end clicked search button handler
 
+        // when any star icon is clicked...
         $("body").on("click", ".staricon", function() {
-            $(this).toggleClass("greenstar");
+            $(this).toggleClass("greenstar"); // turn grey star green and green star grey
+            // create a currentObject with the clicked star's relevant information
             let currentObject = {
                 'title': $(this).closest('.col-5')[0].textContent,
                 'description': $(this).closest('.row').find('.col-7')[0].innerHTML
             };
+            // if the clicked star is now green, populate the favourites section with its relevant information
             if($(this).hasClass("greenstar")) {
-                favouritesArray.push(currentObject);
                 $('#favourites').append(
                     $('<div/>',{class: "row"}).append(
                         $('<div/>',{class: "col-5"}).append( 
@@ -69,12 +71,9 @@ $(document).ready(function(){
                         ) 
                     )
                 )
+            // if the clicked star is now grey, remove it's associated element from the favourites section and toggle colours in results section
             } else {
-                for (i=0; i <= (favouritesArray.length-1); i++) {
-                    if (currentObject.title == favouritesArray[i].title){
-                        favouritesArray.splice(i,1);
-                    }
-                }
+                // remove from favourites div
                 $('#favourites').find('.row').each(function() {
                     console.log($(this).find('.col-5'));
                     console.log($(this).find('.col-5')[0].innerText);
@@ -83,6 +82,7 @@ $(document).ready(function(){
                         $(this).remove();
                     }
                 });
+                // change the star's colour in the results section
                 $('#results').find('.row').each(function() {
                     if ($(this).find('.col-5')[0].innerText == currentObject.title) {
                         console.log(!($($(this).find('.staricon')[0]).hasClass("greenstar")));
@@ -92,7 +92,7 @@ $(document).ready(function(){
                     }
                 });
             }
-        });
+        }); // end clicked star icon handler
 
         // modify 'enter' key functionality
         $('#inputbox').keypress(function(e){
@@ -103,12 +103,12 @@ $(document).ready(function(){
             }
         });
 
+        // when the search input box is empty, clear the results section
         $('.form-control').on('input', function() {
-            if ($(this.value == '')) {
+            if (this.value == '') {
                 $('#results').empty();
             }
         });
-
     }    
 });
 
