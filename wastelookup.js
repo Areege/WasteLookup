@@ -17,11 +17,13 @@ $(document).ready(function(){ // detects whether the DOM is ready to execute Jav
             var myForm = document.getElementById('myform');
             formData = new FormData(myForm); // creates a new FormData object using information from the html form
             var query = formData.get("query"); // retrieves the value associated with the name "query" within the html form
+            query = query.replace(/\s/g,''); // remove spaces from query (to allow for users to enter both "takeout" and "take out" for valid results)
             wasteItems.map(checkArrayItem); // run the function 'checkArrayItem' on each element of wasteItems
 
             function checkArrayItem(currentItem) {
                 // if the current element's keyword string includes the user's query, push that element onto the resultArray
-                if (currentItem["keywords"].includes(query)) {
+                keywords = currentItem["keywords"].replace(/\s/g,''); // remove spaces from keywords string to match queries
+                if (keywords.includes(query)) {
                     // if the query string is empty, show nothing
                     if (query == "") {
                         resultArray = resultArray;
