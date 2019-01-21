@@ -9,6 +9,7 @@ $(document).ready(function(){
     // Once the requested item has been retrieved, run the following within an anonymous function
     request.onload = function() {
         var wasteItems = request.response; // wasteItems represents the JSON object retrieved from the network
+        var favouritesArray = []; // an array to store user's favourites
 
         $('#submitbutton').click(function() { // when the submit button is clicked...
             $('#results').empty(); //empty the div before filling it with new search query
@@ -38,7 +39,7 @@ $(document).ready(function(){
                 $('#results').append(
                     $('<div/>',{class: "row"}).append(
                         $('<div/>',{class: "col-5"}).append( 
-                            $('<img/>',{src:"./images/greystar.png",class:"staricons greystaricon"}),
+                            $('<ion-icon/>',{name: "star", class: "staricon" }),
                             resultArray[i]["title"]
                         ),
                         $('<div/>',{class: "col-7"}).append(
@@ -47,13 +48,50 @@ $(document).ready(function(){
                     )
                 )
             }
+        }); // end clicked search button handler
 
-            $('.greystaricon').click(function(){
-                $('.greystaricon').replaceWith(
-                    $('<img/>',{src:"./images/greenstar.png",class:"staricons",class:"greenstaricon"})
+        $("body").on("click", ".staricon", function() {
+            $(this).toggleClass("greenstar");
+            let currentObject = {
+                'title': $(this).closest('.col-5')[0].textContent,
+                'description': $(this).closest('.row').find('.col-7')[0].innerHTML
+            };
+            if($(this).hasClass("greenstar")) {
+                favouritesArray.push(currentObject);
+                $('#favourites').append(
+                    $('<div/>',{class: "row"}).append(
+                        $('<div/>',{class: "col-5"}).append( 
+                            $('<ion-icon/>',{name: "star", class: "staricon greenstar"}),
+                            currentObject['title']
+                        ),
+                        $('<div/>',{class: "col-7"}).append(
+                            currentObject['description']
+                        ) 
+                    )
                 )
-            })
-
+            } else {
+                for (i=0; i <= (favouritesArray.length-1); i++) {
+                    if (currentObject.title == favouritesArray[i].title){
+                        favouritesArray.splice(i,1);
+                    }
+                }
+                $('#favourites').find('.row').each(function() {
+                    console.log($(this).find('.col-5'));
+                    console.log($(this).find('.col-5')[0].innerText);
+                    console.log(currentObject.title);
+                    if ($(this).find('.col-5')[0].innerText == currentObject.title) {
+                        $(this).remove();
+                    }
+                });
+                $('#results').find('.row').each(function() {
+                    if ($(this).find('.col-5')[0].innerText == currentObject.title) {
+                        console.log(!($($(this).find('.staricon')[0]).hasClass("greenstar")));
+                        if ($($(this).find('.staricon')[0]).hasClass("greenstar")){
+                            $($(this).find('.staricon')[0]).toggleClass("greenstar");
+                        }
+                    }
+                });
+            }
         });
 
         // modify 'enter' key functionality
@@ -65,7 +103,11 @@ $(document).ready(function(){
             }
         });
 
-
+        $('.form-control').on('input', function() {
+            if ($(this.value == '')) {
+                $('#results').empty();
+            }
+        });
 
     }    
 });

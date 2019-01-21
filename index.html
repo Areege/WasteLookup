@@ -9,46 +9,38 @@
     <link rel="stylesheet" type="text/css" href="wastelookup.css">
     <script type = "text/javascript" src = "wastelookup.js" ></script>
 </head>
+
 <body>
-
-
-<div class="container">
-    <div class="row" id="header">
-        <div class="col-12">
-            <h1><strong>Toronto Waste Lookup</strong></h1>
-        </div>
-    </div>
-    <form id="myform" name="myform" action="">
-    <div class="row" id="searchbar">
-        <div class="col-11" id="inputbox">
-                <div class="form-group">
-                    <input type="text" name="query" class="form-control" placeholder="Search">
+    
+    <div class="container">
+        <div class="row" id="header">
+                <div class="col-12">
+                    <h1><strong>Toronto Waste Lookup</strong></h1>
                 </div>
         </div>
-        <div class="col-1" id ="searchbutton">
-            <button type="button" class="btn btn-success" id="submitbutton" name="submitbutton"><ion-icon name="search" id="searchbtnicon"></ion-icon></button>
+        <div id="input">
+            <form id="myform" name="myform" action="">
+                <div class="row" id="searchbar">
+                    <div class="col-11" id="inputbox">
+                            <div class="form-group">
+                                <input type="text" name="query" class="form-control" placeholder="Search for a waste item">
+                            </div>
+                    </div>
+                    <div class="col-1" id ="searchbutton">
+                        <button type="button" class="btn btn-success" id="submitbutton" name="submitbutton"><ion-icon name="search" id="searchbtnicon"></ion-icon></button>
+                    </div>
+                </div>
+                </form>
+        </div>
+        <div id="results"></div>
+        <div id="favouritessection">
+            <div id="favouritesheader">
+                <div class="col-12">
+                    <h2><strong>Favourites</strong></h2>
+                </div>
+            </div>
+            <div id="favourites"></div>
         </div>
     </div>
-    </form>
-    <div id="results"></div>
-    <div id="favouritessection">
-        <div class="row" id="favouritesheader">
-            <div class="col-12">
-                <h2><strong>Favourites</strong></h2>
-            </div>
-        </div>
-        <div class="row" id="favourites">
-            <div class="col-6">
-                Favourites titles go here.
-            </div>
-            <div class="col-6">
-                Favourites descriptions go here.
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 </body>
 </html>

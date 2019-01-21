@@ -1,3 +1,15 @@
+/* Styling the html page to make sure that the relative height properties between div elements work */
+html {
+    height: 100%;
+}
+
+/* Styling body element */
+body {
+    font-size: 1.25rem;
+    color: #343434;
+    height: 100%;
+}
+
 /* Styling the title of page */
 h1 {
     text-align: center;
@@ -10,26 +22,29 @@ h2 {
     font-size: 2rem;
 }
 
-body {
-    font-size: 1.25rem;
-    color: #343434;
+/* Styling the bootstrap container element */
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Adding space below each li element */
 li {
     padding-bottom: .5rem;
 }
 
-
 /* Adding a gradient background to the header of page and adding spacing */
 #header {
     background-image: linear-gradient(to right, #1d5993, #22965e);
-    padding-top: 1.75em;
-    padding-bottom: 1.75em;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    flex: none;
 }
 
 /* Adding spacing between header and search section of page */
 #searchbar {
-    margin-top: 1em;
+    margin-top: 1.25rem;
 }
 
 /* Styling the search input */
@@ -62,10 +77,10 @@ li {
 
 /* Removing padding around search box and button */
 #inputbox { 
-    padding-right: 0px;
+    padding-right: 0;
 }
 #searchbutton {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 /* Changing the colour of the "glow" around the search input box when it is focused on */
@@ -78,8 +93,34 @@ input[type="text"]:focus {
 /* Changing background colour of the favourites section of page */
 #favouritessection {
     background-color: #F7FEFA;
+    flex: 1;
 }
 
+/* Setting flex to none ensures that these divs do not shift relative to the sizes of the others */
 #results {
-    padding-left: 15px;
+    padding-left: 1rem;
+    flex: none;
+}
+#input {
+    flex: none;
+}
+
+/* Lining up the list of items in the favourites section with those in the results section */
+#favourites {
+    padding-left: 1rem;
+}
+
+
+
+/* styling and positioning the star icons */
+.staricon {
+    font-size: 1.5rem;
+    position: relative;
+    right: 0.75rem;
+    top: 0.25rem;
+    color: #AAAAAA;
+}
+
+.greenstar {
+    color: #2B985E;
 }
