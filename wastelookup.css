@@ -23,10 +23,12 @@ h2 {
 }
 
 /* Styling the bootstrap container element */
-.container {
+.container-fluid {
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Adding space below each li element */
@@ -45,6 +47,12 @@ li {
 /* Adding spacing between header and search section of page */
 #searchbar {
     margin-top: 1.25rem;
+
+}
+
+#myform {
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 /* Styling the search input */
@@ -53,6 +61,10 @@ li {
     height: calc(3rem + 2px);
     font-size: 1.25rem;
     border-color: #ABABAB;
+}
+.form-group {
+    display: flex;
+    flex: 1;
 }
 
 /* Styling the search button */
@@ -78,9 +90,11 @@ li {
 /* Removing padding around search box and button */
 #inputbox { 
     padding-right: 0;
+    padding-left: 15px;
 }
 #searchbutton {
-    padding-left: 0;
+    padding-left: 1.25rem;
+    padding-right: 15px;
 }
 
 /* Changing the colour of the "glow" around the search input box when it is focused on */
@@ -100,6 +114,9 @@ input[type="text"]:focus {
 #results {
     padding-left: 1rem;
     flex: none;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 #input {
     flex: none;
@@ -108,9 +125,10 @@ input[type="text"]:focus {
 /* Lining up the list of items in the favourites section with those in the results section */
 #favourites {
     padding-left: 1rem;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
 }
-
-
 
 /* styling and positioning the star icons */
 .staricon {
